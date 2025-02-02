@@ -1,3 +1,6 @@
+# the code given below consists of both the data augmentation part as well as the model training part
+# all written in a single code 
+   
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Flatten
@@ -6,6 +9,15 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.metrics import classification_report, confusion_matrix
 import numpy as np
+
+# just for testing to see if tensorflow is using GPU or not 
+
+# print(tf.__version__)
+# gpus = tf.config.list_physical_devices('GPU')
+# if not gpus:
+#     print("No GPU detected.")
+# else:
+#     print(f"Available GPUs: {gpus}")
 
 
 # Data Augmentation for training data
@@ -86,4 +98,5 @@ y_true = test_data.classes
 
 print("Classification Report:\n", classification_report(y_true, y_pred, target_names=test_data.class_indices.keys()))
 print("Confusion Matrix:\n", confusion_matrix(y_true, y_pred))
+
 
